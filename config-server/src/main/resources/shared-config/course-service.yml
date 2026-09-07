@@ -1,0 +1,6 @@
+server:
+  port: 8082
+
+course:
+  max-enrollment-limit: 100
+  default-page-size: 20
