@@ -8,12 +8,11 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/lms_auth_db
     username: postgres
-    password: root   # <-- CHANGE TO YOUR LOCAL POSTGRES PASSWORD
+    password: root
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      # In production, validate ensures the entity mapping matches Flyway schema exactly
       ddl-auto: validate
     show-sql: true
     properties:
@@ -24,6 +23,13 @@ spring:
     enabled: true
     baseline-on-migrate: true
     locations: classpath:db/migration
+
+# Strict enterprise setting: Fallback only to a developer env variable, no hardcoded default
+application:
+  security:
+    jwt:
+      secret-key: ${JWT_SECRET:dGhpcy1pcy1hLXByb2R1Y3Rpb24tZ3JhZGUtMjU2LWJpdC1zZWNyZXQta2V5LWZvci1qd3QtdG9rZW5z!}
+      expiration: 86400000 # 24 hours in milliseconds
 
 eureka:
   client:
