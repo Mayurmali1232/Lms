@@ -1,0 +1,7 @@
+app:
+  environment: local-development
+  platform-name: "LMS Enterprise Platform"
+
+logging:
+  level:
+    root: INFO
